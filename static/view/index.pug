@@ -1,0 +1,119 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no")
+    title H5 Preloader Demo
+    base(href="./")
+
+    link(href="https://cdn.jsdelivr.net/npm/animate.css@3/animate.min.css", rel="stylesheet")
+
+    style.
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html, body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        overflow: hidden;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-text-size-adjust: 100%;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .preloader-wrapper {
+        position: absolute;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        background-color: #0a4f56;
+      }
+
+      .progress-wrapper {
+        display: flex;
+        width: 47vw;
+        height: 1vw;
+        padding: 0.5vw;
+        margin: 2vw 0;
+        background-color: #052528;
+        border-radius: 1vw;
+        box-shadow: inset 0.2vw -0.2vw 0.2vw #328b94;
+      }
+
+      .progress-bar-wrapper {
+        flex: 1;
+        width: 47vw;
+        height: 1vw;
+        border-radius: 0.5vw;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0, #0a4f56, #25676e);
+      }
+
+      .preloader-text {
+        color: #659094;
+        font-size: 14px;
+      }
+
+      .content-wrapper {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+  body
+    //- preloader
+    .preloader-wrapper
+      .progress-wrapper
+        .progress-bar-wrapper
+          .progress-bar
+      .preloader-text
+        span.text-percent 0
+        | %
+
+    //- content
+    .content-wrapper content
+
+    each _js in htmlWebpackPlugin.files.js
+      script(src=_js)
+
+    script.
+      h5Preloader({
+        type: 'progressBar',
+        progressBar: {
+          eProgressBar: document.querySelector('.progress-bar'),
+          eProgressBarPercent: document.querySelector('.text-percent'),
+        },
+        resources: [
+          "https://cycjimmy.github.io/staticFiles/images/docs/h5-design-template.png",
+          "https://cycjimmy.github.io/staticFiles/images/screenshot/Sony_test_video_640x360.jpg",
+          "https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg",
+        ],
+        hookWhenProgressComplete: () => {
+          document.querySelector('.preloader-wrapper').classList.add('animated', 'slideOutUp');
+        },
+      })
+        .load();

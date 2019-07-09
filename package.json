@@ -1,0 +1,51 @@
+{
+  "name": "h5-preloader",
+  "version": "0.0.1",
+  "description": "Resources pre-load for h5 page",
+  "main": "build/h5-preloader.min.js",
+  "scripts": {
+    "test": "jest",
+    "start": "cross-env NODE_ENV=development webpack --display-modules --display-reasons --display-error-details --watch --color",
+    "build": "cross-env NODE_ENV=production webpack --progress && webpack --progress --display-modules --display-reasons --display-error-details --color",
+    "deploy": "gulp deploy",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cycdpo/h5-preloader.git"
+  },
+  "keywords": [
+    "h5",
+    "preloader"
+  ],
+  "author": "cycjimmy <cycjimmy@gmail.com> (https://github.com/cycjimmy)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cycdpo/h5-preloader/issues"
+  },
+  "homepage": "https://github.com/cycdpo/h5-preloader#readme",
+  "dependencies": {
+    "awesome-js-funcs": "^0.1.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.5.2",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^5.2.0",
+    "gh-pages": "^2.0.1",
+    "gulp": "^4.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.8.0",
+    "pug": "^2.0.4",
+    "regenerator-runtime": "^0.13.2",
+    "uglify-js": "^3.6.0",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
+  }
+}
