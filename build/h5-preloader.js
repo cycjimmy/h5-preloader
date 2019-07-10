@@ -1,5 +1,5 @@
 /*!
- * h5-preloader v0.0.1
+ * h5-preloader v0.0.2
  * Homepage: https://github.com/cycdpo/h5-preloader#readme
  * Released under the MIT License.
  */
@@ -404,6 +404,17 @@ function () {
     var _this = this;
 
     this.status = 1;
+
+    if (this.hooks.onStart) {
+      this.hooks.onStart(this.total);
+    }
+
+    if (!this.resources.length) {
+      this._complete();
+
+      return;
+    }
+
     this.resources.forEach(function (res) {
       var image = new Image();
       var url = '';
@@ -424,10 +435,6 @@ function () {
 
       image.src = url;
     });
-
-    if (this.hooks.onStart) {
-      this.hooks.onStart(this.total);
-    }
   };
 
   /**
@@ -445,9 +452,7 @@ function () {
 
     this.status = 2;
 
-    if (this.hooks.onComplete) {
-      this.hooks.onComplete(this.total);
-    }
+    this._complete();
   };
 
   /**
@@ -456,6 +461,16 @@ function () {
    */
   _proto.getStatus = function getStatus() {
     return this.status;
+  };
+
+  /**
+   * _complete
+   * @private
+   */
+  _proto._complete = function _complete() {
+    if (this.hooks.onComplete) {
+      this.hooks.onComplete(this.total);
+    }
   };
 
   return ResLoaderService;

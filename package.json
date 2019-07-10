@@ -1,6 +1,6 @@
 {
   "name": "h5-preloader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Resources pre-load for h5 page",
   "main": "build/h5-preloader.min.js",
   "scripts": {
@@ -42,6 +42,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.8.0",
     "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
     "regenerator-runtime": "^0.13.2",
     "uglify-js": "^3.6.0",
     "uglifyjs-webpack-plugin": "^2.1.3",

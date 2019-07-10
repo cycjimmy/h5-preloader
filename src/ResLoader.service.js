@@ -57,6 +57,15 @@ export default class ResLoaderService {
   start() {
     this.status = 1;
 
+    if (this.hooks.onStart) {
+      this.hooks.onStart(this.total);
+    }
+
+    if (!this.resources.length) {
+      this._complete();
+      return;
+    }
+
     this.resources.forEach((res) => {
       const image = new Image();
 
@@ -76,10 +85,6 @@ export default class ResLoaderService {
       };
       image.src = url;
     });
-
-    if (this.hooks.onStart) {
-      this.hooks.onStart(this.total);
-    }
   };
 
 
@@ -97,10 +102,7 @@ export default class ResLoaderService {
     }
 
     this.status = 2;
-
-    if (this.hooks.onComplete) {
-      this.hooks.onComplete(this.total);
-    }
+    this._complete();
   };
 
   /**
@@ -109,5 +111,15 @@ export default class ResLoaderService {
    */
   getStatus() {
     return this.status;
+  };
+
+  /**
+   * _complete
+   * @private
+   */
+  _complete() {
+    if (this.hooks.onComplete) {
+      this.hooks.onComplete(this.total);
+    }
   };
 };

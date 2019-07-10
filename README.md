@@ -65,6 +65,10 @@ h5Preloader({
   * hookWhenProgressComplete: [Option][Function] The hook function when the progress complete.
   * autoComplete: [Option][Boolean] Whether to automatic operation the hook function when the progress complete. Default `true`
   
+* `h5Preloader` instance supports the following methods:
+  * `load()`: Start preloader.
+  * `progressComplete()`: Call the progress complete function manually.
+
 ## CDN
 To use via a CDN include this in your HTML:
 ```text
