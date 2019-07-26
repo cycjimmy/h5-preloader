@@ -1,5 +1,5 @@
 /*!
- * h5-preloader v0.0.2
+ * h5-preloader v0.1.0
  * Homepage: https://github.com/cycdpo/h5-preloader#readme
  * Released under the MIT License.
  */
