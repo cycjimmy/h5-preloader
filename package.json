@@ -1,6 +1,6 @@
 {
   "name": "h5-preloader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Resources pre-load for h5 page",
   "main": "build/h5-preloader.min.js",
   "module": "src/index.js",

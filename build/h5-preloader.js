@@ -1,5 +1,5 @@
 /*!
- * h5-preloader v0.1.0
+ * h5-preloader v0.1.1
  * Homepage: https://github.com/cycdpo/h5-preloader#readme
  * Released under the MIT License.
  */
@@ -105,8 +105,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var ProgressBar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var ResLoader_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _ProgressBar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _ResLoader_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 /* harmony import */ var awesome_js_funcs_designPattern_CreateInstance__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
 
 
@@ -150,7 +150,7 @@ function () {
 
     switch (this.type) {
       case 'progressBar':
-        this.progress = new ProgressBar__WEBPACK_IMPORTED_MODULE_0__["default"]({
+        this.progress = new _ProgressBar__WEBPACK_IMPORTED_MODULE_0__["default"]({
           eProgressBar: eProgressBar,
           eProgressBarPercent: eProgressBarPercent,
           hookWhenProgressComplete: hookWhenProgressComplete
@@ -161,7 +161,7 @@ function () {
         this.progress = null;
     }
 
-    this.resLoader = new ResLoader_service__WEBPACK_IMPORTED_MODULE_1__["default"]({
+    this.resLoader = new _ResLoader_service__WEBPACK_IMPORTED_MODULE_1__["default"]({
       baseUrl: baseUrl
     }).setResources(resources).setHooks({
       onStart: function onStart() {
@@ -217,7 +217,7 @@ function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ProgressBar; });
-/* harmony import */ var Progress__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _Progress__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 
@@ -266,7 +266,7 @@ function (_Progress) {
   };
 
   return ProgressBar;
-}(Progress__WEBPACK_IMPORTED_MODULE_0__["default"]);
+}(_Progress__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 
 ;

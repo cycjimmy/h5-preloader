@@ -1,5 +1,5 @@
-import ProgressBar from 'ProgressBar';
-import ResLoaderService from 'ResLoader.service';
+import ProgressBar from './ProgressBar';
+import ResLoaderService from './ResLoader.service';
 import CreateInstance from 'awesome-js-funcs/designPattern/CreateInstance';
 
 const _instance = new CreateInstance();

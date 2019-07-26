@@ -1,4 +1,4 @@
-import Progress from 'Progress';
+import Progress from './Progress';
 
 export default class ProgressBar extends Progress {
   /**
