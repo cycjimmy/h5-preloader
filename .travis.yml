@@ -25,5 +25,5 @@ cache:
 
 script:
   - yarn --version
-  - npm run prepare
-  - jest
+  - npm run build
+  - npm run test
