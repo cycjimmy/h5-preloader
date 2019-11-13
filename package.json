@@ -1,6 +1,6 @@
 {
   "name": "@cycjimmy/h5-preloader",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Resources pre-load for h5 page",
   "main": "dist/h5-preloader.cjs.js",
   "module": "dist/h5-preloader.esm.js",
