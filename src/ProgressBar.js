@@ -6,11 +6,7 @@ export default class ProgressBar extends Progress {
    * @param eProgressBar
    * @param progressPercentText
    */
-  constructor({
-                eProgressBar,
-                eProgressBarPercent,
-                hookWhenProgressComplete,
-              }) {
+  constructor({ eProgressBar, eProgressBarPercent, hookWhenProgressComplete } = {}) {
     super({
       hookWhenProgressComplete
     });
@@ -18,18 +14,22 @@ export default class ProgressBar extends Progress {
     this.els.eProgressBar = eProgressBar;
     this.els.eProgressBarPercent = eProgressBarPercent;
 
-    this.els.eProgressBar.style.cssText =
-      'transform: scaleX(0);' +
-      'transform-origin: 0 50%;' +
-      'transition: transform .2s;';
-  };
+    if (this.els.eProgressBar) {
+      this.els.eProgressBar.style.cssText =
+        'transform: scaleX(0); transform-origin: 0 50%; transition: transform .2s;';
+    }
+  }
 
+  /**
+   * setProgress
+   * @param percent
+   * @returns {ProgressBar}
+   */
   setProgress(percent) {
     if (percent > this.percent) {
       this.percent = percent;
-
       if (this.els.eProgressBar) {
-        this.els.eProgressBar.style.transform = 'scaleX(' + percent / 100 + ')';
+        this.els.eProgressBar.style.transform = `scaleX(${percent / 100})`;
       }
 
       if (this.els.eProgressBarPercent) {
@@ -38,5 +38,5 @@ export default class ProgressBar extends Progress {
     }
 
     return this;
-  };
-};
+  }
+}

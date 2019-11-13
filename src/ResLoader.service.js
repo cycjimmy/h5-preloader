@@ -1,11 +1,11 @@
+import { loadImage } from './tools';
+
 export default class ResLoaderService {
   /**
    * ResLoaderService
    * @param baseUrl:
    */
-  constructor({
-                baseUrl = './',
-              } = {}) {
+  constructor({ baseUrl = './' } = {}) {
     this.baseUrl = baseUrl;
     this.resources = [];
     this.hooks = {};
@@ -18,7 +18,7 @@ export default class ResLoaderService {
 
     // The resource index currently being loaded
     this.currentIndex = 0;
-  };
+  }
 
   /**
    * setResources
@@ -29,7 +29,7 @@ export default class ResLoaderService {
     this.resources = resources;
     this.total = this.resources.length || 0;
     return this;
-  };
+  }
 
   /**
    * setHooks
@@ -38,21 +38,14 @@ export default class ResLoaderService {
    * @param onComplete: The hook function when loaded. Param: total
    * @returns {ResLoaderService}
    */
-  setHooks({
-             onStart = (total) => {
-             },
-             onProgress = (currentIndex, total) => {
-             },
-             onComplete = (total) => {
-             },
-           } = {}) {
+  setHooks({ onStart, onProgress, onComplete } = {}) {
     this.hooks = {
-      onStart: onStart,
-      onProgress: onProgress,
-      onComplete: onComplete,
+      onStart,
+      onProgress,
+      onComplete
     };
     return this;
-  };
+  }
 
   start() {
     this.status = 1;
@@ -62,48 +55,34 @@ export default class ResLoaderService {
     }
 
     if (!this.resources.length) {
-      this._complete();
-      return;
+      return this._complete();
     }
 
-    this.resources.forEach((res) => {
-      const image = new Image();
-
-      let url = '';
-
-      if (res.indexOf('http://') === 0 || res.indexOf('https://') === 0) {
-        url = res;
-      } else {
-        url = this.baseUrl + res;
-      }
-
-      image.onload = () => {
-        this.resLoaded();
-      };
-      image.onerror = () => {
-        this.resLoaded();
-      };
-      image.src = url;
-    });
-  };
-
+    const tasks = this.resources.map((res) =>
+      loadImage(this._handleImageUrl(res)).then(() => this.resLoaded())
+    );
+    return Promise.all(tasks);
+  }
 
   /**
    * resLoaded
+   * @returns {Promise<void>}
    */
   resLoaded() {
+    this.currentIndex += 1;
+
     if (this.hooks.onProgress) {
-      this.hooks.onProgress(++this.currentIndex, this.total);
+      this.hooks.onProgress(this.currentIndex, this.total);
     }
 
     // Complete
-    if (this.currentIndex !== this.total) {
-      return;
+    if (this.currentIndex < this.total) {
+      return Promise.resolve();
     }
 
     this.status = 2;
-    this._complete();
-  };
+    return this._complete();
+  }
 
   /**
    * getStatus
@@ -111,15 +90,30 @@ export default class ResLoaderService {
    */
   getStatus() {
     return this.status;
-  };
+  }
 
   /**
    * _complete
+   * @returns {Promise<void>}
    * @private
    */
   _complete() {
     if (this.hooks.onComplete) {
       this.hooks.onComplete(this.total);
     }
-  };
-};
+
+    return Promise.resolve();
+  }
+
+  _handleImageUrl(res) {
+    let url = '';
+
+    if (res.indexOf('http://') === 0 || res.indexOf('https://') === 0) {
+      url = res;
+    } else {
+      url = this.baseUrl + res;
+    }
+
+    return url;
+  }
+}

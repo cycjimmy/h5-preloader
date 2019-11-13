@@ -1,30 +1,22 @@
 # H5 Preloader
-
-[![NPM version][npm-image]][npm-url]
+![][workflows-badge-image]
 [![build status][travis-image]][travis-url]
-[![David deps][david-image]][david-url]
-[![devDependencies Status][david-dev-image]][david-dev-url]
-[![npm download][download-image]][download-url]
-[![jsdelivr][jsdelivr-image]][jsdelivr-url]
+[![libraries dependency status][libraries-status-image]][libraries-status-url]
+[![libraries sourcerank][libraries-sourcerank-image]][libraries-sourcerank-url]
+[![Coverage Status][coverage-image]][coverage-url]
+[![Release date][release-date-image]][release-url]
+[![rollup][rollup-image]][rollup-url]
+[![semantic-release][semantic-image]][semantic-url]
+[![jest][jest-image]][jest-url]
 [![npm license][license-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/@cycjimmy/h5-preloader.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@cycjimmy/h5-preloader
-[travis-image]: https://img.shields.io/travis/cycjimmy/h5-preloader.svg?style=flat-square
-[travis-url]: https://travis-ci.org/cycjimmy/h5-preloader
-[david-image]: https://img.shields.io/david/cycjimmy/h5-preloader.svg?style=flat-square
-[david-url]: https://david-dm.org/cycjimmy/h5-preloader
-[david-dev-image]: https://david-dm.org/cycjimmy/h5-preloader/dev-status.svg?style=flat-square
-[david-dev-url]: https://david-dm.org/cycjimmy/h5-preloader?type=dev
-[download-image]: https://img.shields.io/npm/dm/@cycjimmy/h5-preloader.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@cycjimmy/h5-preloader
-[jsdelivr-image]: https://data.jsdelivr.com/v1/package/npm/@cycjimmy/h5-preloader/badge
-[jsdelivr-url]: https://www.jsdelivr.com/package/npm/@cycjimmy/h5-preloader
-[license-image]: https://img.shields.io/npm/l/@cycjimmy/h5-preloader.svg?style=flat-square
-
-([Releases](https://github.com/cycjimmy/h5-preloader/releases) | [Demo](https://cycjimmy.github.io/h5-preloader/))
+Resources pre-load for h5 page. [Demo][github-pages-url]
 
 ## Install
+[![NPM version][npm-image]][npm-url]
+[![NPM bundle size][npm-bundle-size-image]][npm-url]
+[![npm download][download-image]][download-url]
+
 ```shell
 # via npm
 $ npm install @cycjimmy/h5-preloader --save
@@ -70,8 +62,49 @@ h5Preloader({
   * `progressComplete()`: Call the progress complete function manually.
 
 ## CDN
+[![jsdelivr][jsdelivr-image]][jsdelivr-url]
+
 To use via a CDN include this in your HTML:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-preloader@1/build/h5-preloader.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-preloader@2/dist/h5-preloader.umd.min.js"></script>
 ```
+
+<!-- Links: -->
+[npm-image]: https://img.shields.io/npm/v/@cycjimmy/h5-preloader
+[npm-url]: https://npmjs.org/package/@cycjimmy/h5-preloader
+[npm-bundle-size-image]: https://img.shields.io/bundlephobia/min/@cycjimmy/h5-preloader
+
+[download-image]: https://img.shields.io/npm/dt/@cycjimmy/h5-preloader
+[download-url]: https://npmjs.org/package/@cycjimmy/h5-preloader
+
+[jsdelivr-image]: https://img.shields.io/jsdelivr/npm/hy/@cycjimmy/h5-preloader
+[jsdelivr-url]: https://www.jsdelivr.com/package/npm/@cycjimmy/h5-preloader
+
+[workflows-badge-image]: https://github.com/cycjimmy/h5-preloader/workflows/Test%20CI/badge.svg
+[travis-image]: https://img.shields.io/travis/cycjimmy/h5-preloader
+[travis-url]: https://travis-ci.org/cycjimmy/h5-preloader
+
+[libraries-status-image]: https://img.shields.io/librariesio/release/npm/@cycjimmy/h5-preloader
+[libraries-sourcerank-image]: https://img.shields.io/librariesio/sourcerank/npm/@cycjimmy/h5-preloader
+[libraries-status-url]: https://libraries.io/github/cycjimmy/h5-preloader
+[libraries-sourcerank-url]: https://libraries.io/npm/@cycjimmy%2Fh5-preloader
+
+[coverage-image]: https://img.shields.io/coveralls/github/cycjimmy/h5-preloader
+[coverage-url]: https://coveralls.io/github/cycjimmy/h5-preloader
+
+[release-date-image]: https://img.shields.io/github/release-date/cycjimmy/h5-preloader
+[release-url]: https://github.com/cycjimmy/h5-preloader/releases
+
+[rollup-image]: https://img.shields.io/github/package-json/dependency-version/cycjimmy/h5-preloader/dev/rollup
+[rollup-url]: https://github.com/rollup/rollup
+
+[semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-url]: https://github.com/semantic-release/semantic-release
+
+[jest-image]: https://img.shields.io/badge/tested_with-jest-99424f.svg
+[jest-url]: https://github.com/facebook/jest
+
+[license-image]: https://img.shields.io/npm/l/@cycjimmy/h5-preloader
+
+[github-pages-url]: https://cycjimmy.github.io/h5-preloader/
 

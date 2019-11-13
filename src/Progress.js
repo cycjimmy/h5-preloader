@@ -3,18 +3,23 @@ export default class Progress {
    * Progress
    * @param hookWhenProgressComplete
    */
-  constructor({
-                hookWhenProgressComplete = () => {
-                },
-              }) {
+  constructor({ hookWhenProgressComplete = () => {} } = {}) {
     this.els = {};
     this.percent = 0;
     this.hookWhenProgressComplete = hookWhenProgressComplete;
-  };
+  }
 
-  setProgress() {
+  /**
+   * setProgress
+   * @param percent
+   * @returns {Progress}
+   */
+  setProgress(percent) {
+    if (percent > this.percent) {
+      this.percent = percent;
+    }
     return this;
-  };
+  }
 
   /**
    * progressComplete
@@ -31,7 +36,6 @@ export default class Progress {
       } else {
         setTimeout(reject, 1000);
       }
-    })
-      .catch(() => this.progressComplete());
-  };
-};
+    }).catch(() => this.progressComplete());
+  }
+}
