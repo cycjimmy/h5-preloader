@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/cycjimmy/h5-preloader/compare/v2.0.0...v2.0.1) (2019-12-19)
+
+
+### Bug Fixes
+
+* **parseint:** ie not support Number.parseInt ([ff344c1](https://github.com/cycjimmy/h5-preloader/commit/ff344c1ff63f265fc50e3e532e0f0e0dc90167fb))
+
 # [2.0.0](https://github.com/cycjimmy/h5-preloader/compare/v1.0.2...v2.0.0) (2019-11-13)
 
 
