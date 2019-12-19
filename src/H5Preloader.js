@@ -42,7 +42,7 @@ export default class {
         }
       },
       onProgress: (currentIndex, total) => {
-        const percent = Number.parseInt((currentIndex / total) * 92, 10) + 4;
+        const percent = parseInt((currentIndex / total) * 92, 10) + 4;
 
         // 4% ~ 96%
         if (this.progress) {
