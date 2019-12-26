@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/cycjimmy/h5-preloader/compare/v2.0.1...v3.0.0) (2019-12-26)
+
+
+### Features
+
+* use resource-loader for load service ([df274ae](https://github.com/cycjimmy/h5-preloader/commit/df274ae9db67c8b09b0c44da85ad55851740740b))
+
+
+### BREAKING CHANGES
+
+* use resource-loader for load service to support more types of resources;
+delete
+configuration parameter `baseUrl`;
+
 ## [2.0.1](https://github.com/cycjimmy/h5-preloader/compare/v2.0.0...v2.0.1) (2019-12-19)
 
 
