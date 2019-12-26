@@ -7,7 +7,6 @@ export default class {
    * @param type
    * @param eProgressBar
    * @param eProgressBarPercent
-   * @param baseUrl
    * @param resources
    * @param hookWhenProgressComplete
    * @param autoComplete
@@ -15,7 +14,6 @@ export default class {
   constructor({
     type = 'progressBar',
     progressBar: { eProgressBar, eProgressBarPercent } = {},
-    baseUrl = './',
     resources = [],
     hookWhenProgressComplete = () => {},
     autoComplete = true
@@ -35,14 +33,14 @@ export default class {
         this.progress = null;
     }
 
-    this.resLoader = new ResLoaderService({ baseUrl }).setResources(resources).setHooks({
+    this.resLoader = new ResLoaderService().setResources(resources).setHooks({
       onStart: () => {
         if (this.progress) {
           this.progress.setProgress(4);
         }
       },
-      onProgress: (currentIndex, total) => {
-        const percent = parseInt((currentIndex / total) * 92, 10) + 4;
+      onProgress: (progress) => {
+        const percent = parseInt(progress * 92 * 0.01, 10) + 4;
 
         // 4% ~ 96%
         if (this.progress) {
@@ -63,10 +61,10 @@ export default class {
 
   /**
    * load
-   * @returns {undefined}
+   * @returns {*}
    */
   load() {
-    return this.resLoader.start();
+    return this.resLoader.load();
   }
 
   /**

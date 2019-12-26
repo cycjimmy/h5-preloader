@@ -38,7 +38,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@cycjimmy/awesome-js-funcs": "^2.1.0"
+    "@cycjimmy/awesome-js-funcs": "^2.1.0",
+    "resource-loader": "^4.0.0-rc3"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
