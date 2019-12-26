@@ -1,23 +1,12 @@
-import { loadImage } from './tools';
+import { Loader } from 'resource-loader';
 
-export default class ResLoaderService {
+export default class {
   /**
    * ResLoaderService
-   * @param baseUrl:
    */
-  constructor({ baseUrl = './' } = {}) {
-    this.baseUrl = baseUrl;
-    this.resources = [];
+  constructor() {
+    this.loader = new Loader();
     this.hooks = {};
-
-    // status: 0:not initiated   1:loading   2:loaded
-    this.status = 0;
-
-    // Total number of resources
-    this.total = 0;
-
-    // The resource index currently being loaded
-    this.currentIndex = 0;
   }
 
   /**
@@ -26,16 +15,15 @@ export default class ResLoaderService {
    * @returns {ResLoaderService}
    */
   setResources(resources = []) {
-    this.resources = resources;
-    this.total = this.resources.length || 0;
+    this.loader.add(resources);
     return this;
   }
 
   /**
    * setHooks
-   * @param onStart: The hook function when start. Param: total
-   * @param onProgress: The hook function when loading. Param: currentIndex, total
-   * @param onComplete: The hook function when loaded. Param: total
+   * @param onStart: The hook function when start.
+   * @param onProgress: The hook function when loading. Param: progress
+   * @param onComplete: The hook function when loaded.
    * @returns {ResLoaderService}
    */
   setHooks({ onStart, onProgress, onComplete } = {}) {
@@ -47,73 +35,30 @@ export default class ResLoaderService {
     return this;
   }
 
-  start() {
-    this.status = 1;
-
+  /**
+   * load
+   * @returns {Promise<unknown>}
+   */
+  load() {
     if (this.hooks.onStart) {
-      this.hooks.onStart(this.total);
+      this.hooks.onStart();
     }
 
-    if (!this.resources.length) {
-      return this._complete();
-    }
+    return new Promise((resolve) => {
+      this.loader.onProgress.add(() => {
+        if (this.hooks.onProgress) {
+          this.hooks.onProgress(this.loader.progress);
+        }
+      });
 
-    const tasks = this.resources.map((res) =>
-      loadImage(this._handleImageUrl(res)).then(() => this.resLoaded())
-    );
-    return Promise.all(tasks);
-  }
+      this.loader.onComplete.add(() => {
+        if (this.hooks.onComplete) {
+          this.hooks.onComplete();
+        }
+        resolve();
+      });
 
-  /**
-   * resLoaded
-   * @returns {Promise<void>}
-   */
-  resLoaded() {
-    this.currentIndex += 1;
-
-    if (this.hooks.onProgress) {
-      this.hooks.onProgress(this.currentIndex, this.total);
-    }
-
-    // Complete
-    if (this.currentIndex < this.total) {
-      return Promise.resolve();
-    }
-
-    this.status = 2;
-    return this._complete();
-  }
-
-  /**
-   * getStatus
-   * @returns {number}
-   */
-  getStatus() {
-    return this.status;
-  }
-
-  /**
-   * _complete
-   * @returns {Promise<void>}
-   * @private
-   */
-  _complete() {
-    if (this.hooks.onComplete) {
-      this.hooks.onComplete(this.total);
-    }
-
-    return Promise.resolve();
-  }
-
-  _handleImageUrl(res) {
-    let url = '';
-
-    if (res.indexOf('http://') === 0 || res.indexOf('https://') === 0) {
-      url = res;
-    } else {
-      url = this.baseUrl + res;
-    }
-
-    return url;
+      this.loader.load();
+    });
   }
 }

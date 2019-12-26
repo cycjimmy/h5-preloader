@@ -49,7 +49,6 @@ h5Preloader({
 
 * `h5Preloader` config:
   * resources: [Require][Array] Resource paths array.
-  * baseUrl: [Option][String] Base url for Resource paths. Default `'./'`
   * type: [Option][String] Set type of progress. Currently only supports `'progressBar'`. Default `'progressBar'`.
   * progressBar: [Option][Object] Progress bar config
     * eProgressBar: [Element] Element of Progress bar.

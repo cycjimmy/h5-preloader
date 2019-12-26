@@ -16,7 +16,7 @@ export default class ProgressBar extends Progress {
 
     if (this.els.eProgressBar) {
       this.els.eProgressBar.style.cssText =
-        'transform: scaleX(0); transform-origin: 0 50%; transition: transform .2s;';
+        'transform: scaleX(0); transform-origin: 0 50%; transition: transform .1s;';
     }
   }
 
@@ -29,7 +29,7 @@ export default class ProgressBar extends Progress {
     if (percent > this.percent) {
       this.percent = percent;
       if (this.els.eProgressBar) {
-        this.els.eProgressBar.style.transform = `scaleX(${percent / 100})`;
+        this.els.eProgressBar.style.transform = `scaleX(${percent * 0.01})`;
       }
 
       if (this.els.eProgressBarPercent) {

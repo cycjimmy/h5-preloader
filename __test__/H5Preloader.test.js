@@ -10,22 +10,6 @@ const eProgressBar = document.createElement('div');
 const eProgressBarPercent = document.createElement('div');
 const hookWhenProgressComplete = () => console.log('hookWhenProgressComplete');
 
-const mockImageElement = () => {
-  // Mocking Image.prototype.src to call the onload or onerror
-  // callbacks depending on the src passed to it
-  Object.defineProperty(global.Image.prototype, 'src', {
-    // Define the property setter
-    set(src) {
-      if (src === imageUrlSuccess) {
-        // Call with setTimeout to simulate async loading
-        setTimeout(() => this.onerror(new Error('error')));
-      } else if (src === imageUrlFail) {
-        setTimeout(() => this.onload());
-      }
-    },
-  });
-};
-
 describe('H5Preloader default value test', () => {
   const preloader = new H5Preloader();
 
@@ -41,18 +25,15 @@ describe('H5Preloader default value test', () => {
 });
 
 describe('H5Preloader type test', () => {
-  beforeAll(() => {
-    mockImageElement();
-  });
-
   const preloader = new H5Preloader({
     type: '',
     autoComplete: false,
     resources,
   });
 
-  it('test preloader.load() when type is null', () => {
-    return preloader.load();
+  it('test preloader.load() when type is null', (done) => {
+    preloader.load();
+    setTimeout(done, 1e3);
   });
 
   it('test preloader.progressComplete()', () => {
@@ -61,10 +42,6 @@ describe('H5Preloader type test', () => {
 });
 
 describe('h5Preloader test', () => {
-  beforeAll(() => {
-    mockImageElement();
-  });
-
   const preloader = new H5Preloader({
     progressBar: {
       eProgressBar, eProgressBarPercent
@@ -73,8 +50,9 @@ describe('h5Preloader test', () => {
     hookWhenProgressComplete,
   });
 
-  it('test preloader.load()', () => {
-    return preloader.load();
+  it('test preloader.load()', (done) => {
+    preloader.load();
+    setTimeout(done, 1e3);
   });
 });
 
