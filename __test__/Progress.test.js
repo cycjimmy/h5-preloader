@@ -1,3 +1,5 @@
+/* eslint no-undef: off */
+/* eslint no-console: off */
 import Progress from '../src/Progress';
 
 const hookWhenProgressComplete = () => console.log('hookWhenProgressComplete');
@@ -22,16 +24,14 @@ describe('h5Preloader default value test', () => {
     expect(progress.percent).toBe(customSetProgressPercent);
   });
 
-  it('progress.percent should be 100 after progress.progressComplete', () => {
-    return progress.progressComplete()
-      .then(() => {
-        expect(progress.percent).toBe(100);
-      });
-  });
+  it('progress.percent should be 100 after progress.progressComplete', () => progress.progressComplete()
+    .then(() => {
+      expect(progress.percent).toBe(100);
+    }));
 });
 
 describe('Progress test', () => {
-  const progress = new Progress({hookWhenProgressComplete,});
+  const progress = new Progress({ hookWhenProgressComplete });
 
   it('progress.hookWhenProgressComplete should be custom hookWhenProgressComplete', () => {
     expect(progress.hookWhenProgressComplete).toBe(hookWhenProgressComplete);
@@ -47,7 +47,7 @@ describe('Progress test', () => {
           tryCount = states.length - 1;
         }
         return states[tryCount];
-      }
+      },
     });
 
     return progress.progressComplete()
@@ -56,4 +56,3 @@ describe('Progress test', () => {
       });
   });
 });
-

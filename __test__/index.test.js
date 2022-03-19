@@ -1,3 +1,4 @@
+/* eslint no-undef: off */
 import h5Preloader from '../src/index';
 
 describe('h5Preloader test', () => {
@@ -7,4 +8,3 @@ describe('h5Preloader test', () => {
     expect(h5Preloader()).toBe(preloader);
   });
 });
-

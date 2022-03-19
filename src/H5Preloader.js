@@ -16,7 +16,7 @@ export default class {
     progressBar: { eProgressBar, eProgressBarPercent } = {},
     resources = [],
     hookWhenProgressComplete = () => {},
-    autoComplete = true
+    autoComplete = true,
   } = {}) {
     this.type = type;
 
@@ -25,7 +25,7 @@ export default class {
         this.progress = new ProgressBar({
           eProgressBar,
           eProgressBarPercent,
-          hookWhenProgressComplete
+          hookWhenProgressComplete,
         });
         break;
 
@@ -55,7 +55,7 @@ export default class {
         if (autoComplete) {
           setTimeout(() => this.progressComplete(), 500);
         }
-      }
+      },
     });
   }
 

@@ -1,3 +1,5 @@
+/* eslint no-undef: off */
+/* eslint no-console: off */
 import ProgressBar from '../src/ProgressBar';
 
 const eProgressBar = document.createElement('div');
@@ -43,17 +45,16 @@ describe('Progress test', () => {
   it('progressBar.percent should be the value custom set after progressBar.setProgress', () => {
     progressBar.setProgress(customSetProgressPercent);
     expect(progressBar.percent).toBe(customSetProgressPercent);
-    expect(progressBar.els.eProgressBarPercent.textContent).toBe('' + customSetProgressPercent);
+    expect(progressBar.els.eProgressBarPercent.textContent).toBe(`${customSetProgressPercent}`);
   });
 
   it('progressBar.percent cannot be reduced', () => {
     const reducedPercent = customSetProgressPercent - 1;
     progressBar.setProgress(reducedPercent);
     expect(progressBar.percent).not.toBe(reducedPercent);
-    expect(progressBar.els.eProgressBarPercent.textContent).not.toBe('' + reducedPercent);
+    expect(progressBar.els.eProgressBarPercent.textContent).not.toBe(`${reducedPercent}`);
 
     expect(progressBar.percent).toBe(customSetProgressPercent);
-    expect(progressBar.els.eProgressBarPercent.textContent).toBe('' + customSetProgressPercent);
+    expect(progressBar.els.eProgressBarPercent.textContent).toBe(`${customSetProgressPercent}`);
   });
 });
-

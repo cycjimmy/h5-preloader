@@ -30,7 +30,7 @@ export default class {
     this.hooks = {
       onStart,
       onProgress,
-      onComplete
+      onComplete,
     };
     return this;
   }

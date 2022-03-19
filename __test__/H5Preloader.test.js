@@ -1,7 +1,9 @@
+/* eslint no-undef: off */
+/* eslint no-console: off */
 import H5Preloader from '../src/H5Preloader';
 
-const imageUrlSuccess = "https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg";
-const imageUrlFail = "https://cycjimmy.github.io/staticFiles/images/screenshot/Sony_test_video_640x360.jpg";
+const imageUrlSuccess = 'https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg';
+const imageUrlFail = 'https://cycjimmy.github.io/staticFiles/images/screenshot/Sony_test_video_640x360.jpg';
 const resources = [
   imageUrlSuccess,
   imageUrlFail,
@@ -19,9 +21,7 @@ describe('H5Preloader default value test', () => {
     expect(preloader.resLoader).toBeTruthy();
   });
 
-  it('test preloader.load()', () => {
-    return preloader.load();
-  });
+  it('test preloader.load()', () => preloader.load());
 });
 
 describe('H5Preloader type test', () => {
@@ -36,15 +36,13 @@ describe('H5Preloader type test', () => {
     setTimeout(done, 1e3);
   });
 
-  it('test preloader.progressComplete()', () => {
-    return preloader.progressComplete();
-  });
+  it('test preloader.progressComplete()', () => preloader.progressComplete());
 });
 
 describe('h5Preloader test', () => {
   const preloader = new H5Preloader({
     progressBar: {
-      eProgressBar, eProgressBarPercent
+      eProgressBar, eProgressBarPercent,
     },
     resources,
     hookWhenProgressComplete,
@@ -55,4 +53,3 @@ describe('h5Preloader test', () => {
     setTimeout(done, 1e3);
   });
 });
-

@@ -8,15 +8,14 @@ export default class ProgressBar extends Progress {
    */
   constructor({ eProgressBar, eProgressBarPercent, hookWhenProgressComplete } = {}) {
     super({
-      hookWhenProgressComplete
+      hookWhenProgressComplete,
     });
 
     this.els.eProgressBar = eProgressBar;
     this.els.eProgressBarPercent = eProgressBarPercent;
 
     if (this.els.eProgressBar) {
-      this.els.eProgressBar.style.cssText =
-        'transform: scaleX(0); transform-origin: 0 50%; transition: transform .1s;';
+      this.els.eProgressBar.style.cssText = 'transform: scaleX(0); transform-origin: 0 50%; transition: transform .1s;';
     }
   }
 
