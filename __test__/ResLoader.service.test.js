@@ -1,7 +1,9 @@
+/* eslint no-undef: off */
+/* eslint no-console: off */
 import ResLoaderService from '../src/ResLoader.service';
 
-const imageUrlSuccess = "https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg";
-const imageUrlFail = "https://cycjimmy.github.io/staticFiles/images/screenshot/Sony_test_video_640x360.jpg";
+const imageUrlSuccess = 'https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg';
+const imageUrlFail = 'https://cycjimmy.github.io/staticFiles/images/screenshot/Sony_test_video_640x360.jpg';
 const onStart = () => console.log('onStart');
 const onProgress = () => console.log('onProgress');
 const onComplete = () => console.log('onComplete');
@@ -29,7 +31,6 @@ describe('ResLoaderService default value test', () => {
 });
 
 describe('ResLoaderService test', () => {
-
   const resources = [
     imageUrlSuccess,
     imageUrlFail,
@@ -54,4 +55,3 @@ describe('ResLoaderService test', () => {
     setTimeout(done, 1e3);
   });
 });
-

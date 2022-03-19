@@ -1,6 +1,5 @@
 # H5 Preloader
 ![][workflows-badge-image]
-[![build status][travis-image]][travis-url]
 [![libraries dependency status][libraries-status-image]][libraries-status-url]
 [![libraries sourcerank][libraries-sourcerank-image]][libraries-sourcerank-url]
 [![Coverage Status][coverage-image]][coverage-url]
@@ -28,9 +27,6 @@ $ yarn add @cycjimmy/h5-preloader
 ## Usage
 ```javascript
 import h5Preloader from '@cycjimmy/h5-preloader';
-
-// OR
-const h5Preloader = require('@cycjimmy/h5-preloader');
 
 h5Preloader({
   type: 'progressBar',
@@ -65,7 +61,7 @@ h5Preloader({
 
 To use via a CDN include this in your HTML:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-preloader@2/dist/h5-preloader.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-preloader@4/dist/h5-preloader.umd.min.js"></script>
 ```
 
 <!-- Links: -->
@@ -80,8 +76,6 @@ To use via a CDN include this in your HTML:
 [jsdelivr-url]: https://www.jsdelivr.com/package/npm/@cycjimmy/h5-preloader
 
 [workflows-badge-image]: https://github.com/cycjimmy/h5-preloader/workflows/Test%20CI/badge.svg
-[travis-image]: https://img.shields.io/travis/cycjimmy/h5-preloader
-[travis-url]: https://travis-ci.org/cycjimmy/h5-preloader
 
 [libraries-status-image]: https://img.shields.io/librariesio/release/npm/@cycjimmy/h5-preloader
 [libraries-sourcerank-image]: https://img.shields.io/librariesio/sourcerank/npm/@cycjimmy/h5-preloader

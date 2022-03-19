@@ -1,8 +1,8 @@
-import CreateInstance from '@cycjimmy/awesome-js-funcs/designPattern/CreateInstance';
+import CreateInstance from '@cycjimmy/awesome-js-funcs/esm/designPattern/CreateInstance';
 
 import H5Preloader from './H5Preloader';
 
-const instance = new CreateInstance();
+const instance = CreateInstance();
 
 /**
  * h5Preloader
