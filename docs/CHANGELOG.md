@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/cycjimmy/h5-preloader/compare/v3.0.0...v4.0.0) (2022-03-19)
+
+
+### Features
+
+* change to module mode ([03b9816](https://github.com/cycjimmy/h5-preloader/commit/03b9816cbfe41c74127b8bea4072abba0e76f735))
+
+
+### BREAKING CHANGES
+
+* change to module mode
+
 # [3.0.0](https://github.com/cycjimmy/h5-preloader/compare/v2.0.1...v3.0.0) (2019-12-26)
 
 
