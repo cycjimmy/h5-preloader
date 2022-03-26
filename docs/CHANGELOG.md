@@ -1,3 +1,20 @@
+# [5.0.0](https://github.com/cycjimmy/h5-preloader/compare/v4.0.0...v5.0.0) (2022-03-26)
+
+
+### Bug Fixes
+
+* add tasks ([94a4ea8](https://github.com/cycjimmy/h5-preloader/commit/94a4ea86da2ecca59e8d9a361cac1177ab8e0cd1))
+
+
+### Features
+
+* refactoring build tasks ([40f6ac2](https://github.com/cycjimmy/h5-preloader/commit/40f6ac200a488df4fa558d59c5b5b653c64fb52d))
+
+
+### BREAKING CHANGES
+
+* refactoring build tasks
+
 # [4.0.0](https://github.com/cycjimmy/h5-preloader/compare/v3.0.0...v4.0.0) (2022-03-19)
 
 
