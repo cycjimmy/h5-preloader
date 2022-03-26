@@ -61,7 +61,7 @@ h5Preloader({
 
 To use via a CDN include this in your HTML:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-preloader@4/dist/h5-preloader.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-preloader@5/dist/h5-preloader.umd.min.js"></script>
 ```
 
 <!-- Links: -->
