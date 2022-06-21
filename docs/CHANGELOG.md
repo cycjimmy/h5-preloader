@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/cycjimmy/h5-preloader/compare/v5.0.1...v5.0.2) (2022-06-21)
+
+
+### Bug Fixes
+
+* fix packaging ([309150a](https://github.com/cycjimmy/h5-preloader/commit/309150ae5cfd277135aca3873a36da41ed8d5e5b))
+
 ## [5.0.1](https://github.com/cycjimmy/h5-preloader/compare/v5.0.0...v5.0.1) (2022-03-26)
 
 
