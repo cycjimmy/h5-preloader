@@ -28,9 +28,11 @@ export const plugins = [
       '**/*.(css|scss)',
     ],
   }),
-  resolve(),
   babel({ babelHelpers: 'bundled' }),
-  commonjs(),
+  commonjs({
+    include: /node_modules/,
+  }),
+  resolve(),
 ];
 
 export const terserPlugins = (IS_PRODUCTION && terser(terserOption));
