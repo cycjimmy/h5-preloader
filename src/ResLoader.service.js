@@ -15,7 +15,10 @@ export default class {
    * @returns {ResLoaderService}
    */
   setResources(resources = []) {
-    this.loader.add(resources);
+    this.loader.add(resources.map((resource) => ({
+      url: resource,
+      crossOrigin: '',
+    })));
     return this;
   }
 
