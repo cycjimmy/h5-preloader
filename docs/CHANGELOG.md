@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/cycjimmy/h5-preloader/compare/v5.0.2...v5.0.3) (2022-10-16)
+
+
+### Bug Fixes
+
+* fix the problem of resource cross-domain error ([2f53b4a](https://github.com/cycjimmy/h5-preloader/commit/2f53b4a5357bd166f3967f450a23a40bf84d791e))
+
 ## [5.0.2](https://github.com/cycjimmy/h5-preloader/compare/v5.0.1...v5.0.2) (2022-06-21)
 
 
