@@ -1668,7 +1668,12 @@
       key: "setResources",
       value: function setResources() {
         var resources = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-        this.loader.add(resources);
+        this.loader.add(resources.map(function (resource) {
+          return {
+            url: resource,
+            crossOrigin: ''
+          };
+        }));
         return this;
       }
       /**
