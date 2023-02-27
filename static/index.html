@@ -6,7 +6,7 @@
   <link rel="shortcut icon" href="./favicon.ico">
   <title>H5 Preloader Demo</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/animate.css@3/animate.min.css" rel="stylesheet">
+  <link href="//unpkg.com/animate.css@4/animate.min.css" rel="stylesheet">
 
   <style>
     * {
@@ -118,7 +118,7 @@
       "https://cycjimmy.github.io/staticFiles/media/Sony_test_video_1280x720.mp4",
     ],
     hookWhenProgressComplete: () => {
-      document.querySelector('.preloader-wrapper').classList.add('animated', 'slideOutUp');
+      document.querySelector('.preloader-wrapper').classList.add('animate__animated', 'animate__slideOutUp');
     },
   })
     .load();
