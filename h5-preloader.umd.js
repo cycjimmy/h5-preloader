@@ -169,7 +169,7 @@
               resolve();
             }, 200);
           } else {
-            setTimeout(reject, 1000);
+            setTimeout(reject, 200);
           }
         })["catch"](function () {
           return _this.progressComplete();
@@ -1343,7 +1343,7 @@
     /**
      * setResources
      * @param resources[]: Resource paths array
-     * @returns {ResLoaderService}
+     * @returns {this}
      */
     _createClass(_default, [{
       key: "setResources",
@@ -1360,10 +1360,10 @@
 
       /**
        * setHooks
-       * @param onStart: The hook function when start.
+       * @param onStart: The hook function when starting.
        * @param onProgress: The hook function when loading. Param: progress
        * @param onComplete: The hook function when loaded.
-       * @returns {ResLoaderService}
+       * @returns {this}
        */
     }, {
       key: "setHooks",
