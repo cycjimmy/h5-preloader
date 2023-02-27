@@ -34,7 +34,7 @@ export default class Progress {
           resolve();
         }, 200);
       } else {
-        setTimeout(reject, 1000);
+        setTimeout(reject, 200);
       }
     }).catch(() => this.progressComplete());
   }

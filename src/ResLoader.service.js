@@ -12,7 +12,7 @@ export default class {
   /**
    * setResources
    * @param resources[]: Resource paths array
-   * @returns {ResLoaderService}
+   * @returns {this}
    */
   setResources(resources = []) {
     this.loader.add(resources.map((resource) => ({
@@ -24,10 +24,10 @@ export default class {
 
   /**
    * setHooks
-   * @param onStart: The hook function when start.
+   * @param onStart: The hook function when starting.
    * @param onProgress: The hook function when loading. Param: progress
    * @param onComplete: The hook function when loaded.
-   * @returns {ResLoaderService}
+   * @returns {this}
    */
   setHooks({ onStart, onProgress, onComplete } = {}) {
     this.hooks = {
