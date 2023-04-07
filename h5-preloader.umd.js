@@ -1425,10 +1425,10 @@
       var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         _ref$type = _ref.type,
         type = _ref$type === void 0 ? 'progressBar' : _ref$type,
-        _ref$progressBar = _ref.progressBar;
-      _ref$progressBar = _ref$progressBar === void 0 ? {} : _ref$progressBar;
-      var eProgressBar = _ref$progressBar.eProgressBar,
-        eProgressBarPercent = _ref$progressBar.eProgressBarPercent,
+        _ref$progressBar = _ref.progressBar,
+        _ref$progressBar2 = _ref$progressBar === void 0 ? {} : _ref$progressBar,
+        eProgressBar = _ref$progressBar2.eProgressBar,
+        eProgressBarPercent = _ref$progressBar2.eProgressBarPercent,
         _ref$resources = _ref.resources,
         resources = _ref$resources === void 0 ? [] : _ref$resources,
         _ref$hookWhenProgress = _ref.hookWhenProgressComplete,
