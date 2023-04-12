@@ -371,6 +371,10 @@
     return Signal;
   }();
 
+  function getDefaultExportFromCjs (x) {
+  	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+  }
+
   var src = (str, opts = {}) => {
     if (!str) return undefined;
     const o = {
@@ -394,6 +398,8 @@
     });
     return uri;
   };
+
+  var parseUri = /*@__PURE__*/getDefaultExportFromCjs(src);
 
   /*!
    * resource-loader - v4.0.0-rc4
@@ -1054,7 +1060,7 @@
       if (window.origin !== window.location.origin) return 'anonymous';
       if (!Resource._tempAnchor) Resource._tempAnchor = document.createElement('a');
       Resource._tempAnchor.href = url;
-      var parsed = src(Resource._tempAnchor.href, {
+      var parsed = parseUri(Resource._tempAnchor.href, {
         strictMode: true
       });
       var samePort = !parsed.port && loc.port === '' || parsed.port === loc.port;
@@ -1258,12 +1264,12 @@
       return this;
     };
     Loader.prototype._prepareUrl = function (url, baseUrl) {
-      var parsed = src(url, {
+      var parsed = parseUri(url, {
         strictMode: true
       });
       this._urlResolvers.forEach(function (resolver) {
         url = resolver(url, parsed);
-        parsed = src(url, {
+        parsed = parseUri(url, {
           strictMode: true
         });
       });
