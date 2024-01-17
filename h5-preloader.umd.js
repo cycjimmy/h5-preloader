@@ -84,17 +84,6 @@
     };
     return _setPrototypeOf(o, p);
   }
-  function _isNativeReflectConstruct() {
-    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-    if (Reflect.construct.sham) return false;
-    if (typeof Proxy === "function") return true;
-    try {
-      Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
   function _assertThisInitialized(self) {
     if (self === void 0) {
       throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -108,20 +97,6 @@
       throw new TypeError("Derived constructors may only return object or undefined");
     }
     return _assertThisInitialized(self);
-  }
-  function _createSuper(Derived) {
-    var hasNativeReflectConstruct = _isNativeReflectConstruct();
-    return function _createSuperInternal() {
-      var Super = _getPrototypeOf(Derived),
-        result;
-      if (hasNativeReflectConstruct) {
-        var NewTarget = _getPrototypeOf(this).constructor;
-        result = Reflect.construct(Super, arguments, NewTarget);
-      } else {
-        result = Super.apply(this, arguments);
-      }
-      return _possibleConstructorReturn(this, result);
-    };
   }
 
   var Progress = /*#__PURE__*/function () {
@@ -179,9 +154,22 @@
     return Progress;
   }();
 
+  function _callSuper(_this, derived, args) {
+    function isNativeReflectConstruct() {
+      if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+      if (Reflect.construct.sham) return false;
+      if (typeof Proxy === "function") return true;
+      try {
+        return !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+      } catch (e) {
+        return false;
+      }
+    }
+    derived = _getPrototypeOf(derived);
+    return _possibleConstructorReturn(_this, isNativeReflectConstruct() ? Reflect.construct(derived, args || [], _getPrototypeOf(_this).constructor) : derived.apply(_this, args));
+  }
   var ProgressBar = /*#__PURE__*/function (_Progress) {
     _inherits(ProgressBar, _Progress);
-    var _super = _createSuper(ProgressBar);
     /**
      * ProgressBar
      * @param eProgressBar
@@ -194,9 +182,9 @@
         eProgressBarPercent = _ref.eProgressBarPercent,
         hookWhenProgressComplete = _ref.hookWhenProgressComplete;
       _classCallCheck(this, ProgressBar);
-      _this = _super.call(this, {
+      _this = _callSuper(this, ProgressBar, [{
         hookWhenProgressComplete: hookWhenProgressComplete
-      });
+      }]);
       _this.els.eProgressBar = eProgressBar;
       _this.els.eProgressBarPercent = eProgressBarPercent;
       if (_this.els.eProgressBar) {
