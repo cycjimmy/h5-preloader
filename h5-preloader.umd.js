@@ -19,6 +19,17 @@
     };
   });
 
+  function _callSuper(t, o, e) {
+    return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e));
+  }
+  function _isNativeReflectConstruct() {
+    try {
+      var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    } catch (t) {}
+    return (_isNativeReflectConstruct = function () {
+      return !!t;
+    })();
+  }
   function _toPrimitive(t, r) {
     if ("object" != typeof t || !t) return t;
     var e = t[Symbol.toPrimitive];
@@ -154,20 +165,6 @@
     return Progress;
   }();
 
-  function _callSuper(_this, derived, args) {
-    function isNativeReflectConstruct() {
-      if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-      if (Reflect.construct.sham) return false;
-      if (typeof Proxy === "function") return true;
-      try {
-        return !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-      } catch (e) {
-        return false;
-      }
-    }
-    derived = _getPrototypeOf(derived);
-    return _possibleConstructorReturn(_this, isNativeReflectConstruct() ? Reflect.construct(derived, args || [], _getPrototypeOf(_this).constructor) : derived.apply(_this, args));
-  }
   var ProgressBar = /*#__PURE__*/function (_Progress) {
     _inherits(ProgressBar, _Progress);
     /**
