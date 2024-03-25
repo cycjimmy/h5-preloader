@@ -130,7 +130,7 @@
      * @param percent
      * @returns {Progress}
      */
-    _createClass(Progress, [{
+    return _createClass(Progress, [{
       key: "setProgress",
       value: function setProgress(percent) {
         if (percent > this.percent) {
@@ -162,11 +162,9 @@
         });
       }
     }]);
-    return Progress;
   }();
 
   var ProgressBar = /*#__PURE__*/function (_Progress) {
-    _inherits(ProgressBar, _Progress);
     /**
      * ProgressBar
      * @param eProgressBar
@@ -195,7 +193,8 @@
      * @param percent
      * @returns {ProgressBar}
      */
-    _createClass(ProgressBar, [{
+    _inherits(ProgressBar, _Progress);
+    return _createClass(ProgressBar, [{
       key: "setProgress",
       value: function setProgress(percent) {
         if (percent > this.percent) {
@@ -210,7 +209,6 @@
         return this;
       }
     }]);
-    return ProgressBar;
   }(Progress);
 
   /*!
@@ -1336,7 +1334,7 @@
      * @param resources[]: Resource paths array
      * @returns {this}
      */
-    _createClass(_default, [{
+    return _createClass(_default, [{
       key: "setResources",
       value: function setResources() {
         var resources = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -1398,7 +1396,6 @@
         });
       }
     }]);
-    return _default;
   }();
 
   var _default = /*#__PURE__*/function () {
@@ -1470,7 +1467,7 @@
      * load
      * @returns {*}
      */
-    _createClass(_default, [{
+    return _createClass(_default, [{
       key: "load",
       value: function load() {
         return this.resLoader.load();
@@ -1486,7 +1483,6 @@
         return this.progress ? this.progress.progressComplete() : Promise.resolve();
       }
     }]);
-    return _default;
   }();
 
   var instance = CreateInstance();
