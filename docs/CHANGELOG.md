@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/cycjimmy/h5-preloader/compare/v5.0.3...v5.0.4) (2024-07-17)
+
+
+### Bug Fixes
+
+* upgrade rollup to v4 ([7e391a2](https://github.com/cycjimmy/h5-preloader/commit/7e391a2b5b5481ad0d49ae30d942b60b4d7e1c85))
+
 ## [5.0.3](https://github.com/cycjimmy/h5-preloader/compare/v5.0.2...v5.0.3) (2022-10-16)
 
 
