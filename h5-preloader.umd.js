@@ -36,7 +36,7 @@
     }
   }
   function _createClass(e, r, t) {
-    return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", {
+    return r && _defineProperties(e.prototype, r), Object.defineProperty(e, "prototype", {
       writable: !1
     }), e;
   }
@@ -79,11 +79,11 @@
     if ("object" != typeof t || !t) return t;
     var e = t[Symbol.toPrimitive];
     if (void 0 !== e) {
-      var i = e.call(t, r || "default");
+      var i = e.call(t, r );
       if ("object" != typeof i) return i;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
-    return ("string" === r ? String : Number)(t);
+    return (String )(t);
   }
   function _toPropertyKey(t) {
     var i = _toPrimitive(t, "string");
@@ -1055,9 +1055,6 @@
     return Resource;
   }();
   function eachSeries(array, iterator, callback, deferNext) {
-    if (deferNext === void 0) {
-      deferNext = false;
-    }
     var i = 0;
     var len = array.length;
     (function next(err) {
@@ -1065,9 +1062,9 @@
         if (callback) callback(err);
         return;
       }
-      if (deferNext) setTimeout(function () {
+      setTimeout(function () {
         return iterator(array[i++], next);
-      }, 1);else iterator(array[i++], next);
+      }, 1);
     })();
   }
   var MAX_PROGRESS = 100;
@@ -1279,7 +1276,7 @@
         if (resource.error) _this.onError.dispatch(resource.error, _this, resource);else _this.onLoad.dispatch(_this, resource);
         _this._resourcesParsing.splice(_this._resourcesParsing.indexOf(resource), 1);
         if (_this._queue.idle() && _this._resourcesParsing.length === 0) _this._onComplete();
-      }, true);
+      });
     };
     Loader.use = function (fn, priority) {
       if (priority === void 0) {
