@@ -338,31 +338,41 @@
   	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
   }
 
-  var src = (str, opts = {}) => {
-    if (!str) return undefined;
-    const o = {
-      key: ['source', 'protocol', 'authority', 'userInfo', 'user', 'password', 'host', 'port', 'relative', 'path', 'directory', 'file', 'query', 'anchor'],
-      q: {
-        name: 'queryKey',
-        parser: /(?:^|&)([^&=]*)=?([^&]*)/g
-      },
-      parser: {
-        strict: /^(?:([^:/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:/?#]*)(?::(\d*))?))?((((?:[^?#/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
-        loose: /^(?:(?![^:@]+:[^:@/]*@)([^:/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#/]*\.[^?#/.]+(?:[?#]|$)))*\/?)?([^?#/]*))(?:\?([^#]*))?(?:#(.*))?)/
-      }
-    };
-    const m = o.parser[opts.strictMode ? 'strict' : 'loose'].exec(str);
-    const uri = {};
-    let i = 14;
-    while (i--) uri[o.key[i]] = m[i] || '';
-    uri[o.q.name] = {};
-    uri[o.key[12]].replace(o.q.parser, function ($0, $1, $2) {
-      if ($1) uri[o.q.name][$1] = $2;
-    });
-    return uri;
-  };
+  var src;
+  var hasRequiredSrc;
 
-  var parseUri = /*@__PURE__*/getDefaultExportFromCjs(src);
+  function requireSrc () {
+  	if (hasRequiredSrc) return src;
+  	hasRequiredSrc = 1;
+
+  	src = (str, opts = {}) => {
+  	  if (!str) return undefined;
+  	  const o = {
+  	    key: ['source', 'protocol', 'authority', 'userInfo', 'user', 'password', 'host', 'port', 'relative', 'path', 'directory', 'file', 'query', 'anchor'],
+  	    q: {
+  	      name: 'queryKey',
+  	      parser: /(?:^|&)([^&=]*)=?([^&]*)/g
+  	    },
+  	    parser: {
+  	      strict: /^(?:([^:/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:/?#]*)(?::(\d*))?))?((((?:[^?#/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
+  	      loose: /^(?:(?![^:@]+:[^:@/]*@)([^:/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#/]*\.[^?#/.]+(?:[?#]|$)))*\/?)?([^?#/]*))(?:\?([^#]*))?(?:#(.*))?)/
+  	    }
+  	  };
+  	  const m = o.parser[opts.strictMode ? 'strict' : 'loose'].exec(str);
+  	  const uri = {};
+  	  let i = 14;
+  	  while (i--) uri[o.key[i]] = m[i] || '';
+  	  uri[o.q.name] = {};
+  	  uri[o.key[12]].replace(o.q.parser, function ($0, $1, $2) {
+  	    if ($1) uri[o.q.name][$1] = $2;
+  	  });
+  	  return uri;
+  	};
+  	return src;
+  }
+
+  var srcExports = requireSrc();
+  var parseUri = /*@__PURE__*/getDefaultExportFromCjs(srcExports);
 
   /*!
    * resource-loader - v4.0.0-rc4
