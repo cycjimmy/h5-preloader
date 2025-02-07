@@ -24,7 +24,7 @@
     return e;
   }
   function _callSuper(t, o, e) {
-    return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e, _getPrototypeOf(t).constructor) : o.apply(t, e));
+    return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e));
   }
   function _classCallCheck(a, n) {
     if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function");
@@ -1069,7 +1069,7 @@
     var len = array.length;
     (function next(err) {
       if (err || i === len) {
-        callback(err);
+        if (callback) callback(err);
         return;
       }
       setTimeout(function () {
