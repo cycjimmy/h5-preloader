@@ -20,7 +20,7 @@
   };
 
   function _assertThisInitialized(e) {
-    if (undefined === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
     return e;
   }
   function _callSuper(t, o, e) {
@@ -67,7 +67,7 @@
   }
   function _possibleConstructorReturn(t, e) {
     if (e && ("object" == typeof e || "function" == typeof e)) return e;
-    if (undefined !== e) throw new TypeError("Derived constructors may only return object or undefined");
+    if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined");
     return _assertThisInitialized(t);
   }
   function _setPrototypeOf(t, e) {
@@ -78,7 +78,7 @@
   function _toPrimitive(t, r) {
     if ("object" != typeof t || !t) return t;
     var e = t[Symbol.toPrimitive];
-    if (undefined !== e) {
+    if (void 0 !== e) {
       var i = e.call(t, r);
       if ("object" != typeof i) return i;
       throw new TypeError("@@toPrimitive must return a primitive value.");
@@ -98,7 +98,7 @@
     function Progress() {
       var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         _ref$hookWhenProgress = _ref.hookWhenProgressComplete,
-        hookWhenProgressComplete = _ref$hookWhenProgress === undefined ? function () {} : _ref$hookWhenProgress;
+        hookWhenProgressComplete = _ref$hookWhenProgress === void 0 ? function () {} : _ref$hookWhenProgress;
       _classCallCheck(this, Progress);
       this.els = {};
       this.percent = 0;
@@ -201,7 +201,7 @@
    */
   var SignalBindingImpl = function () {
     function SignalBindingImpl(fn, once, thisArg) {
-      if (once === undefined) {
+      if (once === void 0) {
         once = false;
       }
       this.next = null;
@@ -258,13 +258,13 @@
       return true;
     };
     Signal.prototype.add = function (fn, thisArg) {
-      if (thisArg === undefined) {
+      if (thisArg === void 0) {
         thisArg = null;
       }
       return this._addSignalBinding(new SignalBindingImpl(fn, false, thisArg));
     };
     Signal.prototype.once = function (fn, thisArg) {
-      if (thisArg === undefined) {
+      if (thisArg === void 0) {
         thisArg = null;
       }
       return this._addSignalBinding(new SignalBindingImpl(fn, true, thisArg));
@@ -830,7 +830,7 @@
   }
   var AsyncQueue = function () {
     function AsyncQueue(worker, concurrency) {
-      if (concurrency === undefined) {
+      if (concurrency === void 0) {
         concurrency = 1;
       }
       this.worker = worker;
@@ -1026,7 +1026,7 @@
       this.onProgress.dispatch(this, percent);
     };
     Resource.prototype._determineCrossOrigin = function (url, loc) {
-      if (loc === undefined) {
+      if (loc === void 0) {
         loc = window.location;
       }
       if (url.indexOf('data:') === 0 || url.indexOf('javascript:') === 0) return '';
@@ -1081,10 +1081,10 @@
   var rgxExtractUrlHash = /(#[\w-]+)?$/;
   var Loader = function () {
     function Loader(baseUrl, concurrency) {
-      if (baseUrl === undefined) {
+      if (baseUrl === void 0) {
         baseUrl = '';
       }
-      if (concurrency === undefined) {
+      if (concurrency === void 0) {
         concurrency = 10;
       }
       this.progress = 0;
@@ -1176,7 +1176,7 @@
       return this;
     };
     Loader.prototype.use = function (fn, priority) {
-      if (priority === undefined) {
+      if (priority === void 0) {
         priority = Loader.DefaultMiddlewarePriority;
       }
       this._middleware.push({
@@ -1289,7 +1289,7 @@
       });
     };
     Loader.use = function (fn, priority) {
-      if (priority === undefined) {
+      if (priority === void 0) {
         priority = Loader.DefaultMiddlewarePriority;
       }
       Loader._defaultMiddleware.push({
@@ -1399,17 +1399,17 @@
       var _this = this;
       var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         _ref$type = _ref.type,
-        type = _ref$type === undefined ? 'progressBar' : _ref$type,
+        type = _ref$type === void 0 ? 'progressBar' : _ref$type,
         _ref$progressBar = _ref.progressBar,
-        _ref$progressBar2 = _ref$progressBar === undefined ? {} : _ref$progressBar,
+        _ref$progressBar2 = _ref$progressBar === void 0 ? {} : _ref$progressBar,
         eProgressBar = _ref$progressBar2.eProgressBar,
         eProgressBarPercent = _ref$progressBar2.eProgressBarPercent,
         _ref$resources = _ref.resources,
-        resources = _ref$resources === undefined ? [] : _ref$resources,
+        resources = _ref$resources === void 0 ? [] : _ref$resources,
         _ref$hookWhenProgress = _ref.hookWhenProgressComplete,
-        hookWhenProgressComplete = _ref$hookWhenProgress === undefined ? function () {} : _ref$hookWhenProgress,
+        hookWhenProgressComplete = _ref$hookWhenProgress === void 0 ? function () {} : _ref$hookWhenProgress,
         _ref$autoComplete = _ref.autoComplete,
-        autoComplete = _ref$autoComplete === undefined ? true : _ref$autoComplete;
+        autoComplete = _ref$autoComplete === void 0 ? true : _ref$autoComplete;
       _classCallCheck(this, _default);
       this.type = type;
       switch (this.type) {
