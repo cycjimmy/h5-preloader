@@ -20,6 +20,11 @@ on:
       - alpha
       - beta
 
+  # A `pull_request` run uses the definition from the base branch, so a branch
+  # that changes the toolchain cannot be validated before it is merged. A manual
+  # trigger runs the definition from the selected ref instead.
+  workflow_dispatch:
+
   schedule:
     - cron: 0 2 * * 0
 
