@@ -1,67 +1,71 @@
-import { Loader } from 'resource-loader';
+import { Loader } from 'resource-loader'
 
 export default class {
   /**
-   * ResLoaderService
+   * Create a resource loader instance.
    */
   constructor() {
-    this.loader = new Loader();
-    this.hooks = {};
+    this.loader = new Loader()
+    this.hooks = {}
   }
 
   /**
-   * setResources
-   * @param resources[]: Resource paths array
-   * @returns {this}
+   * Register the resources to load.
+   *
+   * @param {string[]} [resources] Resource paths.
+   * @returns {this} This instance for chaining.
    */
   setResources(resources = []) {
-    this.loader.add(resources.map((resource) => ({
+    this.loader.add(resources.map(resource => ({
       url: resource,
       crossOrigin: '',
-    })));
-    return this;
+    })))
+    return this
   }
 
   /**
-   * setHooks
-   * @param onStart: The hook function when starting.
-   * @param onProgress: The hook function when loading. Param: progress
-   * @param onComplete: The hook function when loaded.
-   * @returns {this}
+   * Register the loading hooks.
+   *
+   * @param {object} [hooks] Hooks.
+   * @param {Function} [hooks.onStart] Hook called when starting.
+   * @param {Function} [hooks.onProgress] Hook called when loading, receives the progress.
+   * @param {Function} [hooks.onComplete] Hook called when loaded.
+   * @returns {this} This instance for chaining.
    */
   setHooks({ onStart, onProgress, onComplete } = {}) {
     this.hooks = {
       onStart,
       onProgress,
       onComplete,
-    };
-    return this;
+    }
+    return this
   }
 
   /**
-   * load
-   * @returns {Promise<unknown>}
+   * Start loading the registered resources.
+   *
+   * @returns {Promise<void>} Resolves when every resource is loaded.
    */
   load() {
     if (this.hooks.onStart) {
-      this.hooks.onStart();
+      this.hooks.onStart()
     }
 
     return new Promise((resolve) => {
       this.loader.onProgress.add(() => {
         if (this.hooks.onProgress) {
-          this.hooks.onProgress(this.loader.progress);
+          this.hooks.onProgress(this.loader.progress)
         }
-      });
+      })
 
       this.loader.onComplete.add(() => {
         if (this.hooks.onComplete) {
-          this.hooks.onComplete();
+          this.hooks.onComplete()
         }
-        resolve();
-      });
+        resolve()
+      })
 
-      this.loader.load();
-    });
+      this.loader.load()
+    })
   }
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="shortcut icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/index.css">
+  <link href="//unpkg.com/animate.css@4/animate.min.css" rel="stylesheet">
+  <title>H5 Preloader Demo (dev)</title>
+</head>
+
+<body>
+<!--preloader-->
+<div class="preloader-wrapper">
+  <div class="progress-wrapper">
+    <div class="progress-bar-wrapper">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <div class="preloader-text">
+    <span class="text-percent">0</span>%
+  </div>
+</div>
+
+<!--content-->
+<div class="content-wrapper">content</div>
+
+<script type="module">
+  import h5Preloader from '/src/index.js'
+
+  h5Preloader({
+    type: 'progressBar',
+    progressBar: {
+      eProgressBar: document.querySelector('.progress-bar'),
+      eProgressBarPercent: document.querySelector('.text-percent'),
+    },
+    resources: [
+      "https://cycjimmy.github.io/staticFiles/images/docs/h5-design-template.png",
+      "https://cycjimmy.github.io/staticFiles/images/screenshot/Sony_test_video_640x360.jpg",
+      "https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg",
+      "https://cycjimmy.github.io/staticFiles/media/Sony_test_video_1280x720.mp4",
+    ],
+    hookWhenProgressComplete: () => {
+      document.querySelector('.preloader-wrapper').classList.add('animate__animated', 'animate__slideOutUp');
+    },
+  })
+    .load();
+</script>
+</body>
+</html>

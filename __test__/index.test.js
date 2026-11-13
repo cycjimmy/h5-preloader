@@ -1,10 +1,9 @@
-/* eslint no-undef: off */
-import h5Preloader from '../src/index';
+import h5Preloader from '../src/index'
 
 describe('h5Preloader test', () => {
-  const preloader = h5Preloader();
+  const preloader = h5Preloader()
 
-  it('Singleton mode: h5Preloader() should be preloader.', () => {
-    expect(h5Preloader()).toBe(preloader);
-  });
-});
+  it('singleton mode: h5Preloader() should be preloader.', () => {
+    expect(h5Preloader()).toBe(preloader)
+  })
+})
