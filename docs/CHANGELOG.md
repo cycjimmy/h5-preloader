@@ -1,3 +1,46 @@
+# [6.0.0](https://github.com/cycjimmy/h5-preloader/compare/v5.0.4...v6.0.0) (2026-11-13)
+
+
+### Features
+
+* migrate the toolchain to Vite 8 and ship an ESM-only package ([#498](https://github.com/cycjimmy/h5-preloader/issues/498)) ([e1c4875](https://github.com/cycjimmy/h5-preloader/commit/e1c4875c8ee12af5c73495c0eb1aa7658bcafb99))
+
+
+### BREAKING CHANGES
+
+* the CommonJS bundle is no longer published and the UMD builds
+target ES2015, so Internet Explorer is unsupported. Node.js 20.19+ / 22.12+ can
+still `require()` the ESM entry, but a DOM is required because the library reads
+`window` during evaluation.
+
+* ci: deploy the demo through the official GitHub Pages pipeline
+
+`gh-pages` is no longer written to. The build output is uploaded as a Pages
+artifact and published by `actions/deploy-pages`, which removes the stored PAT
+and the dependency on a legacy branch build.
+
+`repository_dispatch: dependabot-merged` is accepted as well, because a
+dependency bump can change the bundled output without touching the source.
+
+* ci: harden the dependabot and issue triage automation
+
+- Auto-merge merges non-major updates and then raises a
+  `repository_dispatch`, because a merge made with `GITHUB_TOKEN` does not
+  start other workflows.
+- Issue triage routes install and usage reports to their own labels, and
+  releases a `needs-info` issue from the short lifecycle once the reporter
+  answers. A closure made by the stale workflow is undone when the reporter
+  comes back, while a closure made by a maintainer is never touched.
+- The needs-info cleanup runs one job per issue inside the same concurrency
+  group as the triage bot, and both use `queue: max` so a waiting reply is not
+  replaced by a later event.
+
+* ci: allow manual test runs
+
+A `pull_request` run uses the workflow definition from the base branch, so a
+branch that replaces the toolchain cannot be validated before it is merged. A
+manual trigger runs the definition from the selected ref instead.
+
 ## [5.0.4](https://github.com/cycjimmy/h5-preloader/compare/v5.0.3...v5.0.4) (2024-07-17)
 
 

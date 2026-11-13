@@ -1,7 +1,7 @@
 {
   "name": "@cycjimmy/h5-preloader",
   "type": "module",
-  "version": "5.0.4",
+  "version": "6.0.0",
   "description": "Resources pre-load for h5 page",
   "author": "cycjimmy <cycjimmy@gmail.com> (https://github.com/cycjimmy)",
   "license": "MIT",
